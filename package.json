@@ -7,7 +7,7 @@
   "author": "Riyan Saputra <alamat.emailnya.riyan@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node start.js"
+    "start": "node src/start.js"
   },
   "dependencies": {
     "@open-wa/wa-automate": "^4.11.1",

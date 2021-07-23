@@ -1,0 +1,32 @@
+{
+    "translate": {
+        "entity": [
+            {
+                "name": "wit$phrase_to_translate",
+                "roles": "phrase_to_translate",
+                "require_message": "Kalimat yang mau diterjemahin apa?!"
+            },
+            {
+                "name": "language",
+                "roles": "language",
+                "default_value": "indonesia"
+            }
+        ],
+        "action": "translate -d {language:language} -t {wit$phrase_to_translate:phrase_to_translate}",
+        "responses": [
+            "Jadi kamu mau translate _{wit$phrase_to_translate:phrase_to_translate}_ ke bahasa _{language:language}_?"
+        ]
+    },
+    "greetings": {
+        "entity": [],
+        "responses": [
+            "Hai!",
+            "Halo!",
+            "Iya?",
+            "Ada apa?",
+            "Hi!",
+            "Oit!"
+        ],
+        "action": null
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "isEnabled": false,
+    "name": "Discord",
+    "config": {
+        "token": ""
+    }
+}

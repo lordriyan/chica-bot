@@ -1,0 +1,12 @@
+{
+    "isEnabled": true,
+    "name": "WhatsApp",
+    "config": {
+        "qrTimeout": 0,
+        "authTimeout": 0,
+        "chromiumArgs": [
+            "--no-sandbox"
+        ],
+        "headless": true 
+    }
+}
