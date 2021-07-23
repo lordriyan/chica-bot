@@ -1,0 +1,22 @@
+{
+  "name": "arisuai-core",
+  "version": "1.0.0",
+  "description": "ArisuAI Core",
+  "main": "index.js",
+  "repository": "https://github.com/lordriyan/arisuai-core.git",
+  "author": "Riyan Saputra <alamat.emailnya.riyan@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node start.js"
+  },
+  "dependencies": {
+    "@open-wa/wa-automate": "^4.11.1",
+    "axios": "^0.21.1",
+    "chalk": "^4.1.0",
+    "discord.js": "^12.3.1",
+    "mysql": "^2.18.1",
+    "node-os-utils": "^1.3.5",
+    "node-wit": "^6.0.0",
+    "telegraf": "^3.38.0"
+  }
+}
