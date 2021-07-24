@@ -6,6 +6,11 @@ console.clear();
 console.log(c`\n{bold.rgb(153,90,233) \n	               ..|'''.| '||       ||                       ..|'''.|                         \n	             .|'     '   || ..   ...    ....   ....      .|'     '    ...   ... ..    ....  \n	             ||          ||' ||   ||  .|   '' '' .||     ||         .|  '|.  ||' '' .|...|| \n	             '|.      .  ||  ||   ||  ||      .|' ||     '|.      . ||   ||  ||     ||      \n	              ''|....'  .||. ||. .||.  '|...' '|..'|'     ''|....'   '|..|' .||.     '|...'}\n\n                         {rgb(100,100,100)  Riyan Saputra (LordRiyan) }                         {bgRgb(153,90,233).black  2020 © Aorex Lab }\n\n`);
 plog(`Initializing..`, 'info', 'system');
 
+// Initializing temp folder
+if (!fs.existsSync('./temp')){
+    fs.mkdirSync('./temp');
+}
+
 // Listing client by read all folder inside client directory
 	fs.readdirSync('./src/client/').forEach(file => {		
 		var metainfo = JSON.parse(fs.readFileSync(`./src/client/${file}/metainfo.json`)); // Read the metainfo.json
