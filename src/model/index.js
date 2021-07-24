@@ -78,14 +78,13 @@ module.exports = {
 									}
 								]
 								try {
-									action = await func.f(file, isOwner)(cmd)
+									action = await func.f(file, isOwner)(cmd);
 								} catch (error) {
-									plog(c`{syan ${file}} {red ${error}}!`, 'error', 'function')
+									plog(c`{syan ${file}} {red ${error}}!`, 'error', 'function');
 									// Change function metainfo.json
-									let metainfo = JSON.parse(fs.readFileSync(`./src/function/${file}/metainfo.json`))
-										metainfo.status = "crash"
-									fs.writeFileSync(`./src/function/${file}/metainfo.json`, JSON.stringify(metainfo, null, 2));
-										
+									let metainfo = JSON.parse(fs.readFileSync(`./src/function/${file}/metainfo.json`));
+										metainfo.status = "crash";
+									fs.writeFileSync(`./src/function/${file}/metainfo.json`, JSON.stringify(metainfo, null, 4));
 								}
 
 								returned = [
