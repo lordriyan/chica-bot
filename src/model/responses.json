@@ -1,4 +1,12 @@
 {
+    "fallback": {
+        "entity": [],
+        "action": null,
+        "responses": [
+            "Maaf, aku tidak dapat mengerti maksudmu 😔",
+            "Maaf, aku tidak mengerti 😔"
+        ]
+    },
     "translate": {
         "entity": [
             {
@@ -12,9 +20,9 @@
                 "default_value": "indonesia"
             }
         ],
-        "action": "translate -d {language:language} -t {wit$phrase_to_translate:phrase_to_translate}",
+        "action": "translate -d {language:language} -t '{wit$phrase_to_translate:phrase_to_translate}'",
         "responses": [
-            "Jadi kamu mau translate _{wit$phrase_to_translate:phrase_to_translate}_ ke bahasa _{language:language}_?"
+            "Menterjemahkan _{wit$phrase_to_translate:phrase_to_translate}_ ke bahasa _{language:language}_"
         ]
     },
     "greetings": {
@@ -26,6 +34,64 @@
             "Ada apa?",
             "Hi!",
             "Oit!"
+        ],
+        "action": null
+    },
+    "greetings_with_introducing": {
+        "entity": [
+            {
+                "name": "name",
+                "roles": "name",
+                "default_value": ""
+            }
+        ],
+        "responses": [
+            "Hai {name:name}, aku Chica! 😊",
+            "Halo {name:name}, namaku Chica! 😊 ",
+            "Hi {name:name}, aku Chica! 😊"
+        ],
+        "action": null
+    },
+    "asking_for_identity": {
+        "entity": [],
+        "responses": [
+            "Hai! Perkenalkan namaku Chica, aku adalah sebuah bot sosial dari Aorex Lab, Senang berkenalan denganmu! 😊",
+            "Halo! Aku Chica, sebuah program yang dikembangkan oleh Aorex Lab. Senang berkenalan denganmu! 😊",
+            "Hi, namaku Chica, aku sebuah bot sosial yang berasal dari Aorex Lab. Senang berkenalan denganmu! 😊"
+        ],
+        "action": null
+    },
+    "praising": {
+        "entity": [],
+        "responses": [
+            "Terima kasih 😊",
+            "Haha, terima kasih ya 😊",
+            "Ahh, terima kasih ya 😊"
+        ],
+        "action": null
+    },
+    "swearing": {
+        "entity": [],
+        "responses": [
+            "Maaf, aku akan mencoba lebih baik lagi 😔",
+            "Kalo aku ada kekurangan aku minta maaf 😔",
+            "Maafin aku, selanjutnya aku akan berusaha lebih baik lagi 😔"
+        ],
+        "action": null
+    },
+    "scaring": {
+        "entity": [],
+        "responses": [
+            "Ihh seram 😱",
+            "😱",
+            "😨"
+        ],
+        "action": null
+    },
+    "unfriendly_emotion": {
+        "entity": [],
+        "responses": [
+            "Ihh"
         ],
         "action": null
     }

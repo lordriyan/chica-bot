@@ -3,8 +3,9 @@ const wa = require('@open-wa/wa-automate'); // https://docs.openwa.dev/
 const fs = require('fs')
 const Chica = require('../../model')
 
-const owner = "6282382961935"
 const number_phone = "6283178488062"
+
+console.log = function() {} // Disable console.log to avoid open-wa junk log
 
 function init(metainfo) {
     wa.create(metainfo.config).then(client => start(client));
@@ -12,16 +13,19 @@ function init(metainfo) {
         client.onMessage(async message => {
             
             var isTalkToClient = (message.mentionedJidList.includes(number_phone+"@c.us") || !message.isGroupMsg)
-            var isOwner = (message.sender.id == owner+"@c.us")
             
             if (isTalkToClient) {
 
                 if (message.type == 'chat') {
-                    var chat = message.body
+                    await client.simulateTyping(message.from, true)
+                    
+                    plog(c`Incoming message from {bgCyan.black  ${message.sender.id} }`, 'info')
+
+                    var chat = message.body.replace('@'+number_phone, '')
                     const responses = await Chica.talk({
-                        message: chat
+                        message: chat,
+                        user_id: message.sender.id
                     })
-                    if (responses.length > 0) await client.simulateTyping(message.from, true)
 
                     responses.forEach(async (e, i) => {
                         // e.type => image, chat, sticker, file, document, etc
@@ -34,7 +38,8 @@ function init(metainfo) {
                         }
                         
                     });
-                    if (responses.length > 0) await client.simulateTyping(message.from, false)
+
+                    await client.simulateTyping(message.from, false)
                 }
 
             }
@@ -42,10 +47,10 @@ function init(metainfo) {
         });
 
         client.onStateChanged(state => {
-            console.log('statechanged', state)
+            plog(`State changed to ${state.toLowerCase()}`, 'warning')
             if (state === "CONFLICT" || state === "UNLAUNCHED") client.forceRefocus();
             if (state === 'UNPAIRED') {
-                process.send({ log: c`{red Logged out!}` });
+                plog(`State changed to unpaired`, 'error')
                 client.kill();
                 init(config, db_config);
             }
