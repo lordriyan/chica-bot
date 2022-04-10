@@ -43,3 +43,8 @@ Currently supported platforms are:
 - Discord : 
 
     Arisu AI#2848
+
+## Powered by
+
+- [@open-wa/wa-automate-nodejs](https://github.com/open-wa/wa-automate-nodejs)
+- [@wit-ai/node-wit](https://github.com/wit-ai/node-wit)
