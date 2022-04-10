@@ -77,8 +77,11 @@ dist
 .dynamodb/
 # TernJS port file
 .tern-port
-
 # managed
 **.data.json
 **.node-persist**
+# end managed
+
+# managed
+**_IGNORE_**
 # end managed

@@ -3,7 +3,7 @@ const c = require('chalk'); // https://github.com/chalk/chalk
 const fs = require('fs');
 
 console.clear();
-console.log(c`\n{bold.rgb(153,90,233) \n	               ..|'''.| '||       ||                       ..|'''.|                         \n	             .|'     '   || ..   ...    ....   ....      .|'     '    ...   ... ..    ....  \n	             ||          ||' ||   ||  .|   '' '' .||     ||         .|  '|.  ||' '' .|...|| \n	             '|.      .  ||  ||   ||  ||      .|' ||     '|.      . ||   ||  ||     ||      \n	              ''|....'  .||. ||. .||.  '|...' '|..'|'     ''|....'   '|..|' .||.     '|...'}\n\n                         {rgb(100,100,100)  Riyan Saputra (LordRiyan) }                         {bgRgb(153,90,233).black  2020 © Aorex Lab }\n\n`);
+console.log(c`\n{bold.rgb(153,90,233) \n	               ..|'''.| '||       ||                       ..|'''.|                         \n	             .|'     '   || ..   ...    ....   ....      .|'     '    ...   ... ..    ....  \n	             ||          ||' ||   ||  .|   '' '' .||     ||         .|  '|.  ||' '' .|...|| \n	             '|.      .  ||  ||   ||  ||      .|' ||     '|.      . ||   ||  ||     ||      \n	              ''|....'  .||. ||. .||.  '|...' '|..'|'     ''|....'   '|..|' .||.     '|...'}\n\n                         {rgb(100,100,100)  Riyan Saputra (LordRiyan) }                         {bgRgb(153,90,233).black  2020 © Avixy Lab }\n\n`);
 plog(`Initializing..`, 'info', 'system');
 
 // Initializing temp folder

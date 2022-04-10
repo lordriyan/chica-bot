@@ -1,9 +1,12 @@
-const {Wit} = require('node-wit'); // https://github.com/wit-ai/node-wit
+const {Wit, log} = require('node-wit'); // https://github.com/wit-ai/node-wit
 const fs = require('fs');
 require('dotenv').config()
-const wit = new Wit({accessToken: process.env.wit_accessToken});
+
+const wit = new Wit({accessToken: process.env.wit_accessToken, logger: new log.Logger(log.DEBUG)});
 const func = require('../function')
 const c = require('chalk')
+
+
 
 const ownerAccountId = [
 	"6282382961935@c.us" // WhatsApp Id
@@ -20,6 +23,8 @@ module.exports = {
 					if (result.intents.length) {
 						intent_wit = result.intents[0].name
 					}
+					
+					plog(c`Responses intent {red ${JSON.stringify(result)}}!`, 'info')
 					
 					if (intent_wit) { // Chica can respon the input
 						let response = JSON.parse(fs.readFileSync(`./src/model/responses.json`))
@@ -80,7 +85,7 @@ module.exports = {
 								try {
 									action = await func.f(file, isOwner)(cmd);
 								} catch (error) {
-									plog(c`{syan ${file}} {red ${error}}!`, 'error', 'function');
+									plog(c`{cyan ${file}} {red ${error}}!`, 'error', 'function');
 									// Change function metainfo.json
 									let metainfo = JSON.parse(fs.readFileSync(`./src/function/${file}/metainfo.json`));
 										metainfo.status = "crash";

@@ -1,7 +1,7 @@
 {
-    "isEnabled": true,
+    "isEnabled": false,
     "name": "Telegram",
     "config": {
-        "token": "1359531636:AAGc5ZUYmHYmcB5cdvpmupQavDEYcwLPaPI"
+        "token": ""
     }
 }

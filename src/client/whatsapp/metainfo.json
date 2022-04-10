@@ -1,6 +1,7 @@
 {
     "isEnabled": true,
     "name": "WhatsApp",
+    "number": "6283178488062",
     "config": {
         "qrTimeout": 0,
         "authTimeout": 0,

@@ -3,11 +3,12 @@ const wa = require('@open-wa/wa-automate'); // https://docs.openwa.dev/
 const fs = require('fs')
 const Chica = require('../../model')
 
-const number_phone = "6283178488062"
 
 console.log = function() {} // Disable console.log to avoid open-wa junk log
 
 function init(metainfo) {
+    const number_phone = metainfo.number
+
     wa.create(metainfo.config).then(client => start(client));
     function start(client) {
         client.onMessage(async message => {
@@ -19,25 +20,28 @@ function init(metainfo) {
                 if (message.type == 'chat') {
                     await client.simulateTyping(message.from, true)
                     
-                    plog(c`Incoming message from {bgCyan.black  ${message.sender.id} }`, 'info')
-
                     var chat = message.body.replace('@'+number_phone, '')
-                    const responses = await Chica.talk({
-                        message: chat,
-                        user_id: message.sender.id
-                    })
+                    
+                    plog(c`Incoming message from {bgCyan.black  ${message.sender.id} }: ${chat}`, 'info')
 
-                    responses.forEach(async (e, i) => {
-                        // e.type => image, chat, sticker, file, document, etc
-                        if (e.type == "chat") {
-                            if (i > 0) await client.sendText(message.from, e.message)
-                            else await client.reply(message.from, e.message, message.id)
-                        }
-                        if (e.type == "map") {
-                            await client.sendLocation(message.from, e.latitude, e.longitude, e.marker_title)
-                        }
+                        const responses = await Chica.talk({
+                            message: chat.length > 0 ? chat : 'hi',
+                            user_id: message.sender.id
+                        })
+
+                        responses.forEach(async (e, i) => {
+                            // e.type => image, chat, sticker, file, document, etc
+                            if (e.type == "chat") {
+                                if (i > 0) await client.sendText(message.from, e.message)
+                                else await client.reply(message.from, e.message, message.id)
+                            }
+                            if (e.type == "map") {
+                                await client.sendLocation(message.from, e.latitude, e.longitude, e.marker_title)
+                            }
+                            
+                        });
+
                         
-                    });
 
                     await client.simulateTyping(message.from, false)
                 }

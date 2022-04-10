@@ -61,6 +61,22 @@
         ],
         "action": null
     },
+    "asking_for_condition": {
+        "entity": [],
+        "responses": [
+            "Alhamdulillah sehat 😊",
+            "Baik 😊"
+        ],
+        "action": null
+    },
+    "asking_for_capability": {
+        "entity": [],
+        "responses": [
+            "Salah satu kemampuanku adalah menterjemahkan bahasa 😊",
+            "Aku bisa melakukan berbagai hal 😊"
+        ],
+        "action": null
+    },
     "praising": {
         "entity": [],
         "responses": [
@@ -94,5 +110,31 @@
             "Ihh"
         ],
         "action": null
+    },
+    "check_crack_game": {
+        "entity": [
+            {
+                "name": "game_name",
+                "roles": "game_name",
+                "require_message": "Nama game nya apa?"
+            }
+        ],
+        "action": "check_crack_game -n '{game_name:game_name}'",
+        "responses": [
+            "Mengecek status crack game _{game_name:game_name}_..."
+        ]
+    },
+    "asking_country_debt": {
+        "entity": [
+            {
+                "name": "country",
+                "roles": "country",
+                "require_message": "Utang negara mana?"
+            }
+        ],
+        "action": "check_country_debt -c '{country:country}'",
+        "responses": [
+            "Menampilkan utang negara _{country:country}_..."
+        ]
     }
 }
